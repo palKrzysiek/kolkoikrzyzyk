@@ -33,3 +33,9 @@ buttom{
 	padding: 3px;
 	margin: auto;
 }
+.winner{
+	background-color: red;
+}
+.winnerPC{
+	background-color: blue;
+}
