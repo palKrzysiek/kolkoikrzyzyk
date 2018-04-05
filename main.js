@@ -74,8 +74,6 @@ const computerTour = ()=>{
 }
 
 //funkcja czy jest zwycięzca 
-let checkWinner =()=>{
-		if
-}
+
 
 document.querySelector(".start").addEventListener("click", roll)
