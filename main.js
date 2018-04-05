@@ -20,18 +20,16 @@ let roll = () =>{
 	document.querySelector(".start").innerHTML = "reset";
 }}
 
-//dodawanie kliku
-
+//click dzianianie
 let clickable =function(){	
 	this.innerHTML = "X";
 	tourOf();
-	roundOf.innerHTML = "Computer O";
 }
 
 let playerTour = ()=>{
 	
 	for(let i = 0; i<9; i++){
-		//click dzianianie
+
 		//jesli jest kolej playera to nadaj click 
 		if(boxTable[i].innerHTML == "" && roundOf.innerHTML == "Player X"){
 			boxTable[i].addEventListener("click", clickable);
@@ -41,8 +39,6 @@ let playerTour = ()=>{
 	}
 
 //czyja kolej
-
-
 let tourOf = () =>{
 	checkWinner();
 	if(roundOf.innerHTML == "Computer O"){
@@ -70,13 +66,14 @@ const computerTour = ()=>{
 		}else {
 			for(let i = 0; i<9; i++){
 				if(boxTable[i].innerHTML == ""){
-				computerTour();}
+				computerTour();
+			}
 		}
 	}
 }
 }
 
-//funkcja czy jest zwycięzca 
+//czy jest zwycięzca 
 let checkWinner=()=>{
 
 	//gdy wygra gracz
@@ -88,8 +85,6 @@ let checkWinner=()=>{
 		for(let i = 0; i<9; i++){
 			boxTable[i].removeEventListener("click", clickable);
 		}
-		
-		//return true;
 	}; 
 	//gdy wygra pc
 	let computerWin=(winnerPC)=>{
@@ -97,49 +92,43 @@ let checkWinner=()=>{
 		for(let j=0; j<winnerPC.length; j++){
 			boxTable[winnerPC[j]].classList.add("winnerPC");
 		}
-	//	return true;
 	}
 	//sprawdzanie zwyciezcy
 	for(let i = 0; i<boxTable.length; i=i+3){
+		// kolumny 1 2 3
 		if(boxTable[i].innerHTML === boxTable[i+1].innerHTML && boxTable[i].innerHTML === boxTable[i+2].innerHTML ){
-			// kolumny 1 2 3
 			if(boxTable[i].innerHTML=="X"){
 				let winnerPlayer=[i,i+1,i+2];
 				playerWin(winnerPlayer);
-				//console.log("ok1");
 			}
 			else if (boxTable[i].innerHTML=="O"){
 				let winnerPC=[i,i+1,i+2];
 				computerWin(winnerPC);
-				//console.log("ok2");
 			}
 		}
 	};
-	for(let i=0; i<3; i++)	
+	for(let i=0; i<3; i++){
+		// wiersze 1 2 3
 		if(boxTable[i].innerHTML === boxTable[i+3].innerHTML && boxTable[i].innerHTML === boxTable[i+6].innerHTML){
 			if(boxTable[i].innerHTML=="X"){
 				let winnerPlayer=[i,i+3,i+6];
-				playerWin(winnerPlayer);
-				//console.log("ok3");
-				
+				playerWin(winnerPlayer);		
 			}
 			else if (boxTable[i].innerHTML=="O"){
 				let winnerPC=[i,i+3,i+6];
 				computerWin(winnerPC);
-				//console.log("ok4");
 			}
 		}
+	};
 	if(boxTable[2].innerHTML === boxTable[4].innerHTML && boxTable[2].innerHTML === boxTable[6].innerHTML){
 		// na skos od prawej górnej
 		if(boxTable[4].innerHTML=="X"){
 			let winnerPlayer=[2,4,6];
 			playerWin(winnerPlayer);
-			//console.log("ok5");
 		}
 		else if (boxTable[4].innerHTML=="O"){
 			let winnerPC=[2,4,6];
 			computerWin(winnerPC);
-			//console.log("ok6")
 		}
 	};
 	if(boxTable[0].innerHTML === boxTable[4].innerHTML && boxTable[0].innerHTML === boxTable[8].innerHTML){
@@ -147,12 +136,10 @@ let checkWinner=()=>{
 		if(boxTable[4].innerHTML=="X"){
 			let winnerPlayer=[0,4,8];
 			playerWin(winnerPlayer);
-			//console.log("ok7");
 		}
 		else if (boxTable[4].innerHTML=="O"){
 			let winnerPC=[0,4,8];
 			computerWin(winnerPC);
-			//console.log("ok8")
 		}
 	}
 }
