@@ -22,20 +22,18 @@ let roll = () =>{
 
 //dodawanie kliku
 
-
+let clickable =function(){	
+	this.innerHTML = "X";
+	tourOf();
+	roundOf.innerHTML = "Computer";
+}
 
 let playerTour = ()=>{
 	for(let i = 0; i<9; i++){
 		//click dzianianie
-		let clickable =function(e){	
-			e.preventDefault();
-			boxTable[i].innerHTML = "X";
-			tourOf();
-			roundOf.innerHTML = "Computer";
-		}
 		//jesli jest kolej playera to nadaj click 
 		if(boxTable[i].innerHTML == "" && roundOf.innerHTML == "Player"){
-			boxTable[i].addEventListener("click", clickable,false)
+			boxTable[i].addEventListener("click", clickable);
 		}
 		};
 	
@@ -47,10 +45,13 @@ let playerTour = ()=>{
 let tourOf = () =>{
 	if(roundOf.innerHTML == "Computer"){
 		roundOf.innerHTML = "Player";
-		setTimeout(playerTour, 1000);
+		playerTour();
 	}
 	else if(roundOf.innerHTML == "Player") {
 		roundOf.innerHTML = "Computer";
+		for(let i = 0; i<9; i++){
+			boxTable[i].removeEventListener("click", clickable);
+			}
 		setTimeout(computerTour, 1000);
 	}
 }
@@ -59,11 +60,6 @@ let tourOf = () =>{
 //ruch komputera 
 const computerTour = ()=>{
 	if(roundOf.innerHTML == "Computer"){
-		for(let i = 0; i<9; i++){
-			boxTable[i].removeEventListener("click", function(){
-			});
-		}
-
 		let i =	Math.round(Math.random()*8)
 		if(boxTable[i].innerHTML==""){
 			boxTable[i].innerHTML = "O";
@@ -77,6 +73,9 @@ const computerTour = ()=>{
 }
 }
 
-//tourOf();
+//funkcja czy jest zwycięzca 
+let checkWinner =()=>{
+		if
+}
 
 document.querySelector(".start").addEventListener("click", roll)
