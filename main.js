@@ -145,4 +145,5 @@ let checkWinner=()=>{
 }
 
 
-document.querySelector(".start").addEventListener("click", roll)
+document.querySelector(".start").addEventListener("click", roll);
+document.querySelector(".exit").addEventListener("click", ()=>{window.close()});
